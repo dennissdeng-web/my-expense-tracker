@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#176b52">
+<title>小账本 · 个人记账</title><meta name="description" content="简单记录每一笔收支，安心掌握生活。数据保存在你的浏览器。">
+<link rel="stylesheet" href="styles.css"><script src="app.js" defer></script>
+</head>
+<body>
+<main class="app">
+<header class="header"><a class="brand" href="./"><span class="logo" aria-hidden="true">账</span><span>小账本<small>把生活，记清楚。</small></span></a><span class="local-badge">● 本地存储</span></header>
+<section class="intro"><p class="eyebrow">MY LITTLE LEDGER</p><h1>每一笔，都有数。</h1><p>从今天开始，轻松记录你的生活。</p></section>
+<section class="overview" aria-label="本月收支统计"><div class="overview-top"><span id="month-title">本月概览</span><span class="pill">人民币 CNY</span></div><p class="balance-label">本月结余</p><strong id="balance" class="balance">¥0.00</strong><div class="totals"><div><span>↙ 本月收入</span><strong id="income">¥0.00</strong></div><div><span>↗ 本月支出</span><strong id="expense">¥0.00</strong></div></div><p class="overview-note">认真生活，也认真对待每一笔收支。</p></section>
+<div class="workspace"><section class="panel entry"><div class="section-title"><h2>记一笔</h2><span>让记录成为习惯</span></div>
+<form id="entry-form"><fieldset class="type-switch"><legend class="sr-only">收支类型</legend><label><input type="radio" name="type" value="expense" checked><span>− 支出</span></label><label><input type="radio" name="type" value="income"><span>＋ 收入</span></label></fieldset>
+<label class="field amount-field" for="amount">金额 <span>必填</span></label><div class="amount-input"><span>¥</span><input id="amount" name="amount" type="text" inputmode="decimal" placeholder="0.00" maxlength="13" required autocomplete="off" aria-describedby="amount-help"></div><small id="amount-help">大于 0，最多两位小数</small>
+<div class="form-grid"><div><label class="field" for="category">分类</label><select id="category" name="category" required></select></div><div><label class="field" for="date">日期</label><input id="date" name="date" type="date" required></div></div>
+<label class="field" for="note">备注 <span>选填</span></label><input id="note" name="note" placeholder="这笔钱用在了哪里？" maxlength="100"><button class="save" type="submit">＋ 保存这一笔</button><p id="form-message" class="message" role="status" aria-live="polite"></p>
+</form></section>
+<section class="panel history"><div class="section-title"><h2>历史账单</h2><span id="record-count">0 笔记录</span></div><div class="filters"><label for="history-month" class="sr-only">按月份查看</label><input id="history-month" type="month"><button id="all-records" class="quiet" type="button">查看全部</button></div><p id="history-caption" class="caption"></p><div id="records"></div></section></div>
+<footer>小账本 · 简单记录，心中有数<p>数据仅保存在当前浏览器，不会上传。清除网站数据会删除账单。</p></footer>
+</main><dialog id="delete-dialog"><h2>删除这笔记录？</h2><p>删除后将重新计算收支，且无法撤销。</p><div class="dialog-actions"><button id="cancel-delete" class="quiet">取消</button><button id="confirm-delete" class="danger">确认删除</button></div></dialog>
+</body></html>
